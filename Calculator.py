@@ -2,14 +2,15 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter.font as font
 import math
-import sys
+
 
 # 40C3EC - color for text on Buttons
 # fffff0 - background color
 # 40C3EC - foreground color
 
 window = Tk()
-window.title('THE BEST CALC EVER')
+window.title("Engineering Calculator")
+window.iconbitmap('./assets/icon.ico')
 window.geometry('345x750')
 window.resizable(width=False, height=False)
 window.configure(bg='#fffff0', borderwidth=8, relief='solid')
@@ -23,7 +24,47 @@ entry.grid(row=0, column=0, columnspan=4, ipady=55)
 
 
 def calc(x):
-    entry.insert(0, x)
+    if x == "=":
+        str1 = "-+0123456789.*/)("
+        if entry.get()[0] not in str1:
+            entry.insert(END, "First symbol is not number")
+            messagebox.showerror("Error!", "You did not enter the number!")
+        try:
+            result = eval(entry.get())
+            entry.insert(END, "=" + str(result))
+        except:
+            entry.insert(END, "Error!")
+            messagebox.showerror("Error!", "Check the correctness of data")
+    elif x == "AC":
+        entry.delete(0, END)
+    elif x == "+-":
+        if "=" in entry.get():
+            entry.delete(0, END)
+        try:
+            if entry.get()[0] == "-":
+                entry.delete(0)
+            else:
+                entry.insert(0, "-")
+        except IndexError:
+            pass
+    elif x == "sin":
+        entry.insert(END, "=" + str(math.sin(int(entry.get()))))
+    elif x == "cos":
+        entry.insert(END, "=" + str(math.cos(int(entry.get()))))
+    elif x == "pow":
+        entry.insert(END, "**")
+    elif x == "(":
+        entry.insert(END, "(")
+    elif x == ")":
+        entry.insert(END, ")")
+    elif x == "fact":
+        entry.insert(END, "=" + str(math.factorial(int(entry.get()))))
+    elif x == "sqrt":
+        entry.insert(END, "=" + str(math.sqrt(int(entry.get()))))
+    else:
+        if "=" in entry.get():
+            entry.delete(0, END)
+        entry.insert(END, x)
 
 
 # names of buttons

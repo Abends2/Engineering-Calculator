@@ -1,7 +1,7 @@
 from tkinter import *
-from tkinter import messagebox
 import tkinter.font as font
 import math
+import sys
 
 # 40C3EC - color for text on Buttons
 # fffff0 - background color
@@ -43,8 +43,26 @@ def main():
         entry.delete(0, END)
         entry.insert(0, value + operation)
 
-    def add_functions():
-        return 0
+    def add_functions(x):
+        value = entry.get()
+        if x == 'sin':
+            str(entry.insert(0, 'sin')) + str(entry.insert(END, ' = ' + str(math.sin(float(value)))))
+        elif x == 'cos':
+            str(entry.insert(0, 'cos')) + str(entry.insert(END, ' = ' + str(math.cos(float(value)))))
+        elif x == 'tan':
+            str(entry.insert(0, 'tan')) + str(entry.insert(END, ' = ' + str(math.tan(float(value)))))
+        elif x == 'sqrt':
+            str(entry.insert(0, '√')) + str(entry.insert(END, ' = ' + str(math.sqrt(float(value)))))
+        elif x == 'fact':
+            str(entry.insert(0, 'fact')) + str(entry.insert(END, ' = ' + str(math.factorial(int(value)))))
+        elif x == 'ln':
+            str(entry.insert(0, 'ln')) + str(entry.insert(END, ' = ' + str(math.log10(float(value)))))
+        elif x == 'pow':
+            entry.insert(END, "**")
+        elif x == 'exp':
+            str(entry.insert(0, 'e^')) + str(entry.insert(END, ' = ' + str(math.exp(float(value)))))
+        else:
+            sys.exit()
 
     # Function of main calculate (without eng_functions)
     def calculate():
@@ -65,9 +83,7 @@ def main():
     def creating_buttons_on_window():
         # names of buttons
         functions = ['sin', 'cos', 'tan', 'sqrt',
-                     'fact', 'log', 'paw', 'exp']
-
-        #staples = ['(', ')'] (LS, RS)
+                     'fact', 'ln', 'pow', 'exp']
 
         numbers = ['7', '8', '9',
                    '4', '5', '6',
@@ -80,7 +96,7 @@ def main():
         row = 1
         col = 0
         for i in functions:
-            b_functions = Button(window, text=i, command=lambda x=i: add_digit(x), width=3,
+            b_functions = Button(window, text=i, command=lambda x=i: add_functions(x), width=3,
                                  bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
             b_functions.grid(row=row, column=col, ipadx=11, ipady=10, padx=10, pady=12)
             col += 1
@@ -122,7 +138,7 @@ def main():
                                bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
         result_btn.grid(row=row+1, column=col+1, ipadx=11, ipady=10, padx=10, pady=12)
 
-        row = 4    # Переопределяем для нового отсчета (операции надо хуйнуть в столбик)
+        row = 4
         for t in operations:
             b_operations = Button(window, text=t, command=lambda x=t: add_operation(x), width=3,
                                   bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)

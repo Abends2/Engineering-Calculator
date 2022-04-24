@@ -5,7 +5,7 @@ import sys
 
 # 40C3EC - цвет текста на кнопках
 # fffff0 - цвет фона
-# 635c57 - фон окна ввода/вывода
+# 0a0a0a - фон окна ввода/вывода
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     f2 = font.Font(family='Arial', size=16, weight='bold')
 
     # Окно ввода/вывода и его конфигурация
-    entry = Entry(window, width=26, relief='solid', borderwidth=2, fg='#40C3EC', bg='#635c57', justify=RIGHT, font=f2)
+    entry = Entry(window, width=26, relief='solid', borderwidth=2, fg='#40C3EC', bg='#0a0a0a', justify=RIGHT, font=f2)
     entry.insert(0, '0')
     entry.grid(row=0, column=0, columnspan=4, ipady=55)
 
@@ -97,7 +97,7 @@ def main():
         col = 0
         for i in functions:
             b_functions = Button(window, text=i, command=lambda x=i: add_functions(x), width=3,
-                                 bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                                 bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
             b_functions.grid(row=row, column=col, ipadx=11, ipady=10, padx=10, pady=12)
             col += 1
             if col > 3:
@@ -105,24 +105,24 @@ def main():
                 row += 1
 
         right_bracket = Button(window, text='(', width=3, command=lambda: add_digit('('),
-                               bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                               bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         right_bracket.grid(row=row, column=col, ipadx=11, ipady=10, padx=10, pady=12)
 
         left_bracket = Button(window, text=')', command=lambda: add_digit(')'), width=3,
-                              bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                              bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         left_bracket.grid(row=row, column=col + 1, ipadx=11, ipady=10, padx=10, pady=12)
 
         btn_del = Button(window, text='DEL', width=3, command=remove_last_elem_by_del,
-                         bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                         bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         btn_del.grid(row=row, column=col+2, ipadx=11, ipady=10, padx=10, pady=12)
 
         btn_ac = Button(window, text='AC', command=cleaning_by_ac, width=3,
-                        bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                        bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         btn_ac.grid(row=row, column=col+3, ipadx=11, ipady=10, padx=10, pady=12)
 
         for k in numbers:
             b_numbers = Button(window, text=k, command=lambda x=k: add_digit(x),
-                               width=3, bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                               width=3, bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
             b_numbers.grid(row=row+1, column=col, ipadx=11, ipady=10, padx=10, pady=12)
             col += 1
             if col > 2:
@@ -130,17 +130,17 @@ def main():
                 row += 1
 
         dot_btn = Button(window, text='.', width=3, command=lambda: add_digit('.'),
-                         bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                         bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         dot_btn.grid(row=row+1, column=col, ipadx=11, ipady=10, padx=10, pady=12)
 
         result_btn = Button(window, text='=', command=calculate, width=3,
-                            bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                            bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
         result_btn.grid(row=row+1, column=col+1, ipadx=11, ipady=10, padx=10, pady=12)
 
         row = 4
         for t in operations:
             b_operations = Button(window, text=t, command=lambda x=t: add_operation(x), width=3,
-                                  bg='#635c57', fg='#40C3EC', borderwidth=5, font=f1)
+                                  bg='#0a0a0a', fg='#40C3EC', borderwidth=5, font=f1)
             b_operations.grid(row=row, column=3, ipadx=11, ipady=10, padx=10, pady=12)
             row += 1
 
